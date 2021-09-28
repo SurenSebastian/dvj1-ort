@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public GameObject mainPosition;
     public float speed;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, mainPosition.transform.position, speed * Time.deltaTime);
+        MoveToPosition(mainPosition.transform.position);
+       
+    }
+
+    public void MoveToPosition(Vector3 target) {
+
+      transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
     }
 }
